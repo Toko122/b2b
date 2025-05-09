@@ -9,30 +9,30 @@ const Popup = ({ popup, onClose }) => {
 
   return (
     <div className="fixed inset-0 bg-[rgba(0,0,0,0.5)] flex justify-center items-center z-50">
-      <div className="bg-white w-[1100px] h-[700px] rounded-lg p-8 overflow-auto relative">
+      <div className="bg-white w-[1100px] h-[700px] rounded-lg sm:p-8 px-2 py-4 overflow-auto relative">
         <button
-          className="absolute right-10 text-2xl cursor-pointer hover:text-red-500 transition-all duration-300"
+          className="absolute right-6 sm:right-10 text-2xl cursor-pointer hover:text-red-500 transition-all duration-300"
           onClick={onClose}
         >
           &times;
         </button>
-        <div className="flex flex-col gap-6">
+        <div className="flex flex-col gap-4 sm:gap-6">
           {brandsProducts.map((product, productIndex) => (
             <div key={productIndex}>
-              {/* Product name */}
+              
               <div
                 onClick={() =>
                   setActiveProductIndex(
                     productIndex === activeProductIndex ? null : productIndex
                   )
                 }
-                className="text-2xl cursor-pointer w-fit px-4 py-2 rounded-md flex flex-col gap-2 hover:text-[#B2B2B2] transition-all duration-300"
+                className="sm:text-2xl text-1xl font-semibold cursor-pointer w-fit px-4 py-2 rounded-md flex flex-col gap-2 hover:text-[#B2B2B2] transition-all duration-300"
               >
                 {product.name}
                 <span className="bg-black w-full h-[1px]"></span>
               </div>
 
-              {/* Brands list */}
+              
               {activeProductIndex === productIndex && (
                 <div className="ml-6 mt-2">
                   <div className="text-lg font-semibold mb-2">
@@ -54,13 +54,13 @@ const Popup = ({ popup, onClose }) => {
                     ))}
                   </div>
 
-                  {/* Brand Products */}
+                 
                   {activeBrandIndex !== null && product.brandPorducts && (
-                    <div className="mt-4 pl-2">
-                      <div className="text-md font-medium mb-1">
+                    <div className="mt-4 pl-2 flex flex-col gap-2">
+                      <div className="text-md font-medium mb-1 ">
                         {product.brands[activeBrandIndex].brandName} Products:
                       </div>
-                      <ul className="list-disc pl-6 text-sm text-gray-700">
+                      <div className="pl-2 text-[15px] font-semibold w-fit cursor-pointer text-[#848484] hover:underline">
                         {product.brandPorducts
                           .filter((bp) =>
                             bp.brandProductName
@@ -70,9 +70,10 @@ const Popup = ({ popup, onClose }) => {
                               )
                           )
                           .map((bp, i) => (
-                            <li key={i}>{bp.brandProductName}</li>
+                            <div key={i}>{bp.brandProductName}</div>
                           ))}
-                      </ul>
+                      </div>
+                      
                     </div>
                   )}
                 </div>
