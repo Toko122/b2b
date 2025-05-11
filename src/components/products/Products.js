@@ -27,7 +27,7 @@ const Products = () => {
           <div className="relative w-full">
   <div
     ref={scrollRef}
-    className="flex gap-4 px-2 py-4 overflow-x-auto scroll-smooth scrollbar-hide snap-x snap-mandatory sm:overflow-x-hidden"
+    className="flex gap-4 px-2 py-4 overflow-x-auto scroll-smooth scrollbar-hide sm:overflow-x-hidden"
   >
     {BestSellers.map((item, index) => (
       <Link
