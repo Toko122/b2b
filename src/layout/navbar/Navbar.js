@@ -40,7 +40,7 @@ const Navbar = () => {
             </div>
           </div>
 
-          {/* Cart & Login */}
+          
           <div className="flex gap-3 md:gap-4">
             <Link
               to="/cart"
@@ -59,7 +59,7 @@ const Navbar = () => {
             </Link>
           </div>
 
-          <div className="md:flex">
+          <div className="md:flex hidden">
               <button
                 onClick={() => setOpenPopup(true)}
                 className="text-[22px] p-2 cursor-pointer"

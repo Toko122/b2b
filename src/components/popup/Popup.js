@@ -18,7 +18,7 @@ const Popup = ({ popup, onClose }) => {
         </button>
         <div className="flex flex-col gap-4 sm:gap-6">
           {brandsProducts.map((product, productIndex) => (
-            <div key={productIndex}>
+            <div key={productIndex} className="">
               
               <div
                 onClick={() =>
@@ -34,11 +34,9 @@ const Popup = ({ popup, onClose }) => {
 
               
               {activeProductIndex === productIndex && (
-                <div className="ml-6 mt-2">
-                  <div className="text-lg font-semibold mb-2">
-                    {product.tag}
-                  </div>
-                  <div className="flex gap-4 flex-wrap">
+                <div className="ml-4 mt-2">
+                  
+                  <div className="flex gap-4 flex-wrap flex-col w-fit text-center">
                     {product.brands.map((brand, brandIndex) => (
                       <div
                         key={brandIndex}
@@ -55,27 +53,7 @@ const Popup = ({ popup, onClose }) => {
                   </div>
 
                  
-                  {activeBrandIndex !== null && product.brandPorducts && (
-                    <div className="mt-4 pl-2 flex flex-col gap-2">
-                      <div className="text-md font-medium mb-1 ">
-                        {product.brands[activeBrandIndex].brandName} Products:
-                      </div>
-                      <div className="pl-2 text-[15px] font-semibold w-fit cursor-pointer text-[#848484] hover:underline">
-                        {product.brandPorducts
-                          .filter((bp) =>
-                            bp.brandProductName
-                              .toLowerCase()
-                              .includes(
-                                product.brands[activeBrandIndex]?.brandName
-                              )
-                          )
-                          .map((bp, i) => (
-                            <div key={i}>{bp.brandProductName}</div>
-                          ))}
-                      </div>
-                      
-                    </div>
-                  )}
+                 
                 </div>
               )}
             </div>

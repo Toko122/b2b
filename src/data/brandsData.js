@@ -2,11 +2,10 @@ export const brandsProducts = [
   {
     name: "Mobile",
     price: "50",
-    tag: "Mobile Brands",
     brands: [
-      { brandName: "apple" },
-      { brandName: "samsung" },
-      { brandName: "xiaomi" },
+      { brandName: "Apple" },
+      { brandName: "Samsung" },
+      { brandName: "Xiaomi" },
     ],
     brandPorducts: [
       { brandProductName: "apple Computer" },
@@ -17,11 +16,11 @@ export const brandsProducts = [
   {
     name: "Laptop",
     price: "50",
-    tag: "Laptop Brands",
     brands: [
-      { brandName: "apple" },
-      { brandName: "samsung" },
-      { brandName: "xiaomi" },
+      { brandName: "Apple" },
+      { brandName: "Samsung" },
+      { brandName: "Lenovo" },
+      { brandName: "Xiaomi" },
     ],
     brandPorducts: [
       { brandProductName: "apple Computer" },
@@ -32,11 +31,11 @@ export const brandsProducts = [
   {
     name: "Computer",
     price: "50",
-    tag: "Computer Brands",
     brands: [
-      { brandName: "apple" },
-      { brandName: "samsung" },
-      { brandName: "xiaomi" },
+      { brandName: "Apple" },
+      { brandName: "Samsung" },
+      { brandName: "Lenovo" },
+      { brandName: "Xiaomi" },
     ],
     brandPorducts: [
       { brandProductName: "apple Computer" },
@@ -44,4 +43,24 @@ export const brandsProducts = [
       { brandProductName: "xiaomi Computer" },
     ],
   },
+  {
+    name: "Gaming",
+    price: "50",
+    brands: [
+      { brandName: "Apple" },
+      { brandName: "Samsung" },
+      { brandName: "Lenovo" },
+      { brandName: "Xiaomi" },
+    ],
+  },
+  {
+    name: "Tabs",
+    price: "50",
+    brands: [
+      { brandName: "Apple" },
+      { brandName: "Samsung" },
+      { brandName: "Lenovo" },
+      { brandName: "Xiaomi" },
+    ],
+  }
 ];
