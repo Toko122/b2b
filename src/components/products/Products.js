@@ -25,47 +25,51 @@ const Products = () => {
           <h1 className="text-[22px] font-semibold text-center ml-2">Best Sellers Phones</h1>
 
           <div className="relative w-full">
-            <div
-              ref={scrollRef}
-              className="flex gap-4 px-2 py-4 overflow-x-hidden scroll-smooth scrollbar-hide"
-            >
-              {BestSellers.map((item, index) => (
-                <Link to='/productpage'
-                key={index}
-                className="group relative min-w-[220px] sm:min-w-[250px] bg-white text-black rounded-lg shadow py-4 px-4 overflow-hidden transition-all duration-300 ease-in-out"
-              >
-                <img
-                  src={item.image}
-                  alt={item.name}
-                  className="w-full h-48 object-cover rounded mb-2"
-                />
-                <h2 className="text-lg font-bold">{item.name}</h2>
-                <p className="text-sm font-semibold text-[#333333] w-[250px]">{item.description}</p>
-                <p className="text-md font-semibold">{item.price} ₾</p>
-            
-                <div className="sm:group-hover:bottom-2 sm:bottom-0 bottom-2 opacity-100 sm:opacity-0 group-hover:opacity-100 transition-all duration-300 overflow-hidden absolute left-1/2 transorm sm:-translate-x-1/2">
-                  <div className="w-full cursor-pointer  bg-[#F28F6A] text-white sm:px-4 sm:py-2 px-[10px] py-[6px] text-[14px] rounded-[20px] transition-opacity duration-300">
-                    Add To Cart
-                  </div>
-                </div>
-              </Link>
-              ))}
+  <div
+    ref={scrollRef}
+    className="flex gap-4 px-2 py-4 overflow-x-hidden scroll-smooth scrollbar-hide snap-x snap-mandatory"
+  >
+    {BestSellers.map((item, index) => (
+      <Link
+        to="/productpage"
+        key={index}
+        className="group snap-start relative bg-white text-black rounded-xl shadow-md w-[85vw] sm:w-[250px] shrink-0 transition-all duration-300 ease-in-out"
+      >
+        <img
+          src={item.image}
+          alt={item.name}
+          className="w-full h-[180px] sm:h-[200px] object-cover rounded-t-xl"
+        />
+        <div className="p-4 flex flex-col gap-1">
+          <h2 className="text-base sm:text-lg font-semibold truncate">{item.name}</h2>
+          <p className="text-sm sm:text-sm text-gray-600 line-clamp-2">{item.description}</p>
+          <p className="text-[15px] sm:text-md font-semibold mt-1">{item.price} ₾</p>
+
+          <div className="mt-3 sm:group-hover:bottom-3 sm:bottom-0 bottom-2 opacity-100 sm:opacity-0 group-hover:opacity-100 transition-all duration-300 overflow-hidden absolute left-1/2 transform -translate-x-1/2">
+            <div className="bg-[#F28F6A] text-white text-sm px-5 py-2 rounded-full cursor-pointer">
+              Add To Cart
             </div>
-
-            <button
-              onClick={scrollLeft}
-              className="absolute left-2 top-1/2 -translate-y-1/2 cursor-pointer bg-white p-[12px] rounded-full shadow hover:bg-gray-200"
-            >
-              <IoIosArrowBack />
-            </button>
-
-            <button
-              onClick={scrollRight}
-              className="absolute right-0 top-1/2 cursor-pointer -translate-y-1/2 bg-white p-[12px] rounded-full shadow hover:bg-gray-200"
-            >
-              <IoIosArrowForward />
-            </button>
           </div>
+        </div>
+      </Link>
+    ))}
+  </div>
+
+  <button
+    onClick={scrollLeft}
+    className="hidden sm:flex absolute left-2 top-1/2 -translate-y-1/2 cursor-pointer bg-white p-3 rounded-full shadow hover:bg-gray-200"
+  >
+    <IoIosArrowBack />
+  </button>
+  <button
+    onClick={scrollRight}
+    className="hidden sm:flex absolute right-0 top-1/2 -translate-y-1/2 cursor-pointer bg-white p-3 rounded-full shadow hover:bg-gray-200"
+  >
+    <IoIosArrowForward />
+  </button>
+</div>
+
+
         </div>
 
          
