@@ -59,6 +59,8 @@ const Navbar = () => {
             </Link>
           </div>
 
+          
+
           <div className="md:flex hidden">
               <button
                 onClick={() => setOpenPopup(true)}
@@ -67,6 +69,12 @@ const Navbar = () => {
                 <FaBars />
               </button>
             </div>
+
+            <div className="flex justify-center items-center">
+            <div className="flex justify-center items-center py-2 px-4 bg-[#EEEEEE] rounded-[20px] font-semibold cursor-pointer hover:bg-[#ccc] transition-all duration-300">
+              Create Product
+            </div>
+          </div>
 
         </div>
       </nav>
