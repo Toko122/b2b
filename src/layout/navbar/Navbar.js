@@ -70,11 +70,9 @@ const Navbar = () => {
               </button>
             </div>
 
-            <div className="flex justify-center items-center">
-            <div className="flex justify-center items-center py-2 px-4 bg-[#EEEEEE] rounded-[20px] font-semibold cursor-pointer hover:bg-[#ccc] transition-all duration-300">
-              Create Product
-            </div>
-          </div>
+            <div className="flex items-center justify-center gap-2 py-2 px-4 bg-[#EEE] rounded-full md:rounded-[8px] cursor-pointer shadow text-sm md:text-base font-semibold md:w-[220px] md:text-[14px] lg:w-[150px] hover:bg-[#ccc] transition-all duration-300">
+                Create Product
+              </div>
 
         </div>
       </nav>
