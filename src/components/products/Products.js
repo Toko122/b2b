@@ -27,7 +27,7 @@ const Products = () => {
           <div className="relative w-full">
   <div
     ref={scrollRef}
-    className="flex gap-4 px-2 py-4 overflow-x-hidden scroll-smooth scrollbar-hide snap-x snap-mandatory"
+    className="flex gap-4 px-2 py-4 overflow-x-auto scroll-smooth scrollbar-hide snap-x snap-mandatory sm:overflow-x-hidden"
   >
     {BestSellers.map((item, index) => (
       <Link
@@ -38,7 +38,7 @@ const Products = () => {
         <img
           src={item.image}
           alt={item.name}
-          className="w-full h-[180px] sm:h-[200px] object-cover rounded-t-xl"
+          className="w-full h-[180px] sm:h-[200px] object-contain rounded-t-xl"
         />
         <div className="p-4 flex flex-col gap-1">
           <h2 className="text-base sm:text-lg font-semibold truncate">{item.name}</h2>
