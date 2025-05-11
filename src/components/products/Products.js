@@ -32,7 +32,7 @@ const Products = () => {
               {BestSellers.map((item, index) => (
                 <Link to='/productpage'
                 key={index}
-                className="group relative min-w-[200px] sm:min-w-[250px] bg-white text-black rounded-lg shadow py-4 px-4 overflow-hidden transition-all duration-300 ease-in-out"
+                className="group relative min-w-[220px] sm:min-w-[250px] bg-white text-black rounded-lg shadow py-4 px-4 overflow-hidden transition-all duration-300 ease-in-out"
               >
                 <img
                   src={item.image}
@@ -43,7 +43,7 @@ const Products = () => {
                 <p className="text-sm font-semibold text-[#333333] w-[250px]">{item.description}</p>
                 <p className="text-md font-semibold">{item.price} ₾</p>
             
-                <div className="sm:group-hover:bottom-2 sm:bottom-0 bottom-4 opacity-100 sm:opacity-0 group-hover:opacity-100 transition-all duration-300 overflow-hidden absolute left-1/2 transorm sm:-translate-x-1/2">
+                <div className="sm:group-hover:bottom-2 sm:bottom-0 bottom-2 opacity-100 sm:opacity-0 group-hover:opacity-100 transition-all duration-300 overflow-hidden absolute left-1/2 transorm sm:-translate-x-1/2">
                   <div className="w-full cursor-pointer  bg-[#F28F6A] text-white sm:px-4 sm:py-2 px-[10px] py-[6px] text-[14px] rounded-[20px] transition-opacity duration-300">
                     Add To Cart
                   </div>
