@@ -44,7 +44,7 @@ const Products = () => {
                 <p className="text-md font-semibold">{item.price} ₾</p>
             
                 <div className="sm:group-hover:bottom-2 sm:bottom-0 bottom-4 opacity-100 sm:opacity-0 group-hover:opacity-100 transition-all duration-300 overflow-hidden absolute left-1/2 transorm sm:-translate-x-1/2">
-                  <div className="w-full cursor-pointer  bg-[#F28F6A] text-white sm:px-4 sm:py-2 px-2 py-2 rounded-[20px] transition-opacity duration-300">
+                  <div className="w-full cursor-pointer  bg-[#F28F6A] text-white sm:px-4 sm:py-2 px-[10px] py-[6px] text-[14px] rounded-[20px] transition-opacity duration-300">
                     Add To Cart
                   </div>
                 </div>
