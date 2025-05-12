@@ -1,6 +1,6 @@
 import React from 'react';
 import { ComputerData } from '../../data/ComputerData';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
 const ProductPage = () => {
   const { id } = useParams();
@@ -16,9 +16,12 @@ const ProductPage = () => {
 
   return (
     <div className="flex w-full justify-center bg-gray-100 py-22">
-      <div className="flex flex-col md:flex-row w-4/5 max-w-screen-lg bg-white rounded-lg shadow-lg overflow-hidden">
-        <div className="md:w-1/2 p-8 flex justify-center items-center">
+      <div className="flex flex-col md:flex-row w-4/5 max-w-screen-lg bg-white rounded-lg shadow-lg overflow-hidden py-4 px-[14px]">
+      <Link to="/" className='text-indigo-600 underline h-fit'>Back</Link>
+
+        <div className="md:w-1/2 p-8 flex justify-start items-center">
           <div className="rounded-md overflow-hidden">
+
             <img
               src={product.image}
               alt={product.name}

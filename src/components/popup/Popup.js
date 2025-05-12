@@ -1,11 +1,16 @@
 import React, { useState } from "react";
 import { brandsProducts } from "../../data/brandsData";
+import { useNavigate } from "react-router-dom";
+
 
 const Popup = ({ popup, onClose }) => {
   const [activeProductIndex, setActiveProductIndex] = useState(null);
   const [activeBrandIndex, setActiveBrandIndex] = useState(null);
+  const navigate = useNavigate()
 
   if (!popup) return null;
+
+
 
   return (
     <div className="fixed inset-0 bg-[rgba(0,0,0,0.5)] flex justify-center items-center z-50">
@@ -41,12 +46,12 @@ const Popup = ({ popup, onClose }) => {
                       <div
                         key={brandIndex}
                         className="px-3 py-1 bg-gray-100 rounded-md shadow-sm text-sm cursor-pointer hover:bg-gray-200"
-                        onClick={() =>
-                          setActiveBrandIndex(
-                            brandIndex === activeBrandIndex ? null : brandIndex
-                          )
-                        }
+                        onClick={() => {
+                          setActiveBrandIndex(brandIndex === activeBrandIndex ? null : brandIndex);
+                          navigate(`/brand/${brand.brandName.toLowerCase()}`);
+                        }}
                       >
+                       
                         {brand.brandName}
                       </div>
                     ))}
