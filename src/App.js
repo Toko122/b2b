@@ -6,9 +6,13 @@ import { Products } from "./pages/products/Products";
 import ProductPage from "./components/productPage/ProductPage";
 
 import Navbar from "./layout/navbar/Navbar";
+import Footer from "./layout/footer/Footer";
 
 import Cart from "./components/cart/Cart";
 import Login from "./components/login/Login";
+import CreateProduct from "./components/createProduct/CreateProduct";
+import ComputerPage from "./components/computerPage/ComputerPage";
+
 
 function App() {
   return (
@@ -20,8 +24,12 @@ function App() {
         <Route path="/products" element={<Products />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/registration" element={<Login />} />
-        <Route path="/productpage" element={<ProductPage />} />
+        <Route path="/productpage/:id" element={<ProductPage />} />
+        <Route path="/computerpage/:id" element={<ComputerPage />} />
+        <Route path="/create-product" element={<CreateProduct />} />
       </Routes>
+
+      <Footer />
     </>
   );
 }

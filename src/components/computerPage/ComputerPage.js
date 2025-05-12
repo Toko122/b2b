@@ -1,10 +1,10 @@
 import React from 'react';
-import { BestSellers } from '../../data/BestSellers';
+import { ComputerData } from '../../data/ComputerData';
 import { useParams } from 'react-router-dom';
 
 const ProductPage = () => {
   const { id } = useParams();
-  const product = BestSellers.find((p) => p.id === id);
+  const product = ComputerData.find((p) => p.id === id);
 
   if (!product) {
     return (

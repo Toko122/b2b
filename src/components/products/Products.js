@@ -3,9 +3,11 @@ import { BestSellers } from './../../data/BestSellers';
 import { IoIosArrowBack } from "react-icons/io";
 import { IoIosArrowForward } from "react-icons/io";
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import { BrandsPhoto } from '../../data/BrandsPhosto';
 import { ComputerData } from '../../data/ComputerData';
+
 
 const Products = () => {
   const scrollRef = useRef(null)
@@ -18,42 +20,48 @@ const Products = () => {
     scrollRef.current.scrollBy({ left: 300, behavior: 'smooth' })
   }
 
+  const navigate = useNavigate()
+
   return (
     <>
     <div className="w-full flex justify-center items-center flex-col">
-      <div className="flex flex-col items-center py-6 sm:px-4 px-2 w-full gap-10">
+      <div className="flex flex-col items-center py-6 sm:px-4 px-2 w-full gap-16 relative">
         <div className="flex flex-col gap-4 w-full max-w-6xl items-start">
           <h1 className="text-[22px] font-semibold text-center ml-2">Best Sellers Phones</h1>
+
+          <button onClick={() => navigate('/create-product')} className="flex items-center absolute lg:right-64 md:right-20 right-0 justify-center py-2 px-4 bg-[#EEE] rounded-full md:rounded-[8px] cursor-pointer shadow text-sm md:text-base font-semibold md:text-[14px] lg:w-[150px] hover:bg-[#ccc] transition-all duration-300">
+                Create Product
+              </button>
 
           <div className="relative w-full">
   <div
     ref={scrollRef}
     className="flex gap-4 px-2 py-4 overflow-x-auto scroll-smooth scrollbar-hide sm:overflow-x-hidden"
   >
-    {BestSellers.map((item, index) => (
-      <Link
-        to="/productpage"
-        key={index}
-        className="group snap-start relative bg-white text-black rounded-xl shadow-md w-[85vw] sm:w-[250px] shrink-0 transition-all duration-300 ease-in-out"
-      >
-        <img
-          src={item.image}
-          alt={item.name}
-          className="w-full h-[180px] sm:h-[200px] object-contain rounded-t-xl"
-        />
-        <div className="p-4 flex flex-col gap-1">
-          <h2 className="text-base sm:text-lg font-semibold truncate">{item.name}</h2>
-          <p className="text-sm sm:text-sm text-gray-600 line-clamp-2">{item.description}</p>
-          <p className="text-[15px] sm:text-md font-semibold mt-1">{item.price} ₾</p>
+   {BestSellers.map((item, index) => (
+  <Link
+    to={`/productpage/${item.id}`}
+    key={index}
+    className="group snap-start relative bg-white text-black rounded-xl shadow-md w-[85vw] sm:w-[250px] shrink-0 transition-all duration-300 ease-in-out"
+  >
+    <img
+      src={item.image}
+      alt={item.name}
+      className="w-full h-[180px] sm:h-[200px] object-contain rounded-t-xl"
+    />
+    <div className="p-4 flex flex-col gap-1">
+      <h2 className="text-base sm:text-lg font-semibold truncate">{item.name}</h2>
+      <p className="text-sm sm:text-sm text-gray-600 line-clamp-2">{item.description}</p>
+      <p className="text-[15px] sm:text-md font-semibold mt-1">{item.price} ₾</p>
 
-          <div className="mt-3 sm:group-hover:bottom-3 sm:bottom-0 bottom-2 opacity-100 sm:opacity-0 group-hover:opacity-100 transition-all duration-300 overflow-hidden absolute left-1/2 transform -translate-x-1/2">
-            <div className="bg-[#F28F6A] text-white text-sm px-5 py-2 rounded-full cursor-pointer">
-              Add To Cart
-            </div>
-          </div>
+      <div className="mt-3 sm:group-hover:bottom-3 sm:bottom-0 bottom-2 opacity-100 sm:opacity-0 group-hover:opacity-100 transition-all duration-300 overflow-hidden absolute left-1/2 transform -translate-x-1/2">
+        <div className="bg-[#F28F6A] text-white text-sm px-5 py-2 rounded-full cursor-pointer">
+          Add To Cart
         </div>
-      </Link>
-    ))}
+      </div>
+    </div>
+  </Link>
+))}
   </div>
 
   <button
@@ -81,7 +89,7 @@ const Products = () => {
 
                <h1 className='text-[22px] font-semibold text-center'>Brands</h1>
 
-               <div className='w-full flex gap-[18px] flex-wrap justify-center sm:justify-start'>
+               <div className='w-full flex gap-[18px] flex-wrap justify-center sm:justify-start md:justify-center'>
                   {
                     BrandsPhoto.map((product,index) => (
                       <div key={index} className='group/brand block'>
@@ -105,21 +113,21 @@ const Products = () => {
     ref={scrollRef}
     className="flex gap-4 px-2 py-4 overflow-x-auto scroll-smooth scrollbar-hide sm:overflow-x-hidden"
   >
-    {ComputerData.map((item, index) => (
+    {ComputerData.map((computer, index) => (
       <Link
-        to="/productpage"
+        to={`/computerpage/${computer.id}`}
         key={index}
         className="group snap-start relative bg-white text-black rounded-xl shadow-md w-[85vw] sm:w-[250px] shrink-0 transition-all duration-300 ease-in-out"
       >
         <img
-          src={item.image}
-          alt={item.name}
+          src={computer.image}
+          alt={computer.name}
           className="w-full h-[180px] sm:h-[200px] object-contain rounded-t-xl"
         />
         <div className="p-4 flex flex-col gap-1">
-          <h2 className="text-base sm:text-lg font-semibold truncate">{item.name}</h2>
-          <p className="text-sm sm:text-sm text-gray-600 line-clamp-2">{item.description}</p>
-          <p className="text-[15px] sm:text-md font-semibold mt-1">{item.price} ₾</p>
+          <h2 className="text-base sm:text-lg font-semibold truncate">{computer.name}</h2>
+          <p className="text-sm sm:text-sm text-gray-600 line-clamp-2">{computer.description}</p>
+          <p className="text-[15px] sm:text-md font-semibold mt-1">{computer.price} ₾</p>
 
           <div className="mt-3 sm:group-hover:bottom-3 sm:bottom-0 bottom-2 opacity-100 sm:opacity-0 group-hover:opacity-100 transition-all duration-300 overflow-hidden absolute left-1/2 transform -translate-x-1/2">
             <div className="bg-[#F28F6A] text-white text-sm px-5 py-2 rounded-full cursor-pointer">
