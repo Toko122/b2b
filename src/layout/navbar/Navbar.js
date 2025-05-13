@@ -1,15 +1,37 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 import { FaSearch, FaCartArrowDown, FaBars } from "react-icons/fa";
 import { BiUserCircle } from "react-icons/bi";
 import Popup from "../../components/popup/Popup";
+import Cart from "../../components/cart/Cart";
+
 
 const Navbar = () => {
   const [openPopup, setOpenPopup] = useState(false);
 
+  const [cartCount, setCartCount] = useState(0)
+
+  useEffect(()=>{
+    const updatedCart = ()=>{
+      const carts = JSON.parse(localStorage.getItem("cart")) || []
+      const totalProd = carts.reduce((total, item)=> total + item.quantity, 0)
+      setCartCount(totalProd)
+    }
+
+    updatedCart()
+
+    window.addEventListener("cartUpdated", updatedCart)
+
+    return () => {
+      window.removeEventListener("cartUpdated", updatedCart);
+    };
+  }, [])
+
+  const location = useLocation()
+  const isHomePage = location.pathname === '/'
   return (
     <>
-      <nav className="w-full bg-[#FBFBFB] shadow-sm">
+      <nav className={`w-full bg-[#FBFBFB] shadow-sm ${isHomePage ? "fixed top-0 z-100" : ""}`}>
         <div className="max-w-full mx-auto flex flex-col md:flex-row justify-between items-center px-4 md:px-10 lg:px-24 py-4 gap-4 md:gap-6 h-auto md:h-[90px]">
 
           
@@ -42,13 +64,16 @@ const Navbar = () => {
 
           
           <div className="flex gap-3 md:gap-4">
-            <Link
-              to="/cart"
-              className="flex items-center gap-2 py-2 px-3 md:px-4 bg-white rounded-full md:rounded-[8px] cursor-pointer shadow"
+          <Link
+            to="/cart"
+            className="flex relative items-center gap-2 py-2 px-3 md:px-4 bg-white rounded-full md:rounded-[8px] cursor-pointer shadow"
             >
-              <span className="font-semibold text-sm md:text-base">Cart</span>
-              <FaCartArrowDown className="text-lg" />
-            </Link>
+            <span className="font-semibold text-sm md:text-base">Cart</span>
+            <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold px-2 py-0.5 rounded-full">
+             {cartCount}
+                </span>
+           <FaCartArrowDown className="text-lg" />
+           </Link>
 
             <Link
               to="/registration"
@@ -74,6 +99,7 @@ const Navbar = () => {
       </nav>
 
       <Popup popup={openPopup} onClose={() => setOpenPopup(false)} />
+      
     </>
   );
 };
