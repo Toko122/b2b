@@ -28,7 +28,7 @@ const Products = () => {
   return (
     <>
     <div className="w-full flex justify-center items-center flex-col">
-      <div className="flex flex-col items-center py-6 sm:px-4 px-2 w-full gap-16 relative">
+      <div className="flex flex-col items-center py-6 sm:px-4 px-2 w-full gap-16 relative overflow-x-hidden">
         <div className="flex flex-col gap-4 w-full max-w-6xl items-start">
           <h1 className="text-[22px] font-semibold text-center ml-2">Best Sellers Phones</h1>
 
