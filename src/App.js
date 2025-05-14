@@ -13,6 +13,7 @@ import Login from "./components/login/Login";
 import CreateProduct from "./components/createProduct/CreateProduct";
 import ComputerPage from "./components/computerPage/ComputerPage";
 import BrandsPage from "./components/brandsPage/BrandsPage";
+import Details from "./components/details/Details";
 
 
 function App() {
@@ -29,6 +30,7 @@ function App() {
         <Route path="/computerpage/:id" element={<ComputerPage />} />
         <Route path="/create-product" element={<CreateProduct />} />
         <Route path="/brand/:brandName" element={<BrandsPage />} />
+        <Route path="/:id/details" element={<Details />} />
       </Routes>
 
       <Footer />

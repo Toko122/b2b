@@ -4,7 +4,7 @@ import { Link, useParams } from 'react-router-dom';
 
 const ProductPage = () => {
   const { id } = useParams();
-  const product = BestSellers.find((p) => p.id === id);
+  const product = BestSellers.find((p) => p.id === Number(id));
 
   if (!product) {
     return (

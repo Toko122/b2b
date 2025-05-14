@@ -13,7 +13,7 @@ const Popup = ({ popup, onClose }) => {
 
 
   return (
-    <div className="fixed inset-0 bg-[rgba(0,0,0,0.5)] flex justify-center items-center z-50">
+    <div className="fixed inset-0 bg-[rgba(0,0,0,0.5)] flex justify-center items-center z-150">
       <div className="bg-white w-[1100px] h-[700px] rounded-lg sm:p-8 px-2 py-4 overflow-auto relative">
         <button
           className="absolute right-6 sm:right-10 text-2xl cursor-pointer hover:text-red-500 transition-all duration-300"

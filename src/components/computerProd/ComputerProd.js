@@ -2,8 +2,8 @@ import React, { useRef } from 'react';
 import { ComputerData } from './../../data/ComputerData';
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { useNavigate } from 'react-router-dom';
-import Brands from '../brands/Brands';
 import AddToCart from '../AddToCart';
+import { CiCirclePlus } from "react-icons/ci";
 
 const ComputerProd = () => {
   const scrollRef = useRef(null);
@@ -37,19 +37,22 @@ const ComputerProd = () => {
                     src={item.image}
                     alt={item.name}
                     className="w-full h-[180px] sm:h-[200px] object-contain rounded-t-xl"
-                    onClick={() => navigate(`/productpage/${item.id}`)}
+                    onClick={() => {navigate(`/computerpage/${item.id}`); window.scrollTo(0,0)}}
                   />
                   <div className="p-4 flex flex-col gap-1">
                     <h2 className="text-base sm:text-lg font-semibold truncate">{item.name}</h2>
                     <p className="text-sm sm:text-sm text-gray-600 line-clamp-2">{item.description}</p>
+                    <div className='flex justify-between'>
                     <p className="text-[15px] sm:text-md font-semibold mt-1">{item.price} ₾</p>
+                    <div onClick={()=>{ navigate(`/${item.id}/details`); window.scrollTo(0,0)}} className='hover:bg-blue-600 transition-all duration-300 bg-blue-500 cursor-pointer text-white py-[4px] px-4 rounded-[20px]'>Details</div>
+                    </div>
 
-                    <div className="mt-3 sm:group-hover:bottom-3 sm:bottom-0 bottom-2 opacity-100 sm:opacity-0 group-hover:opacity-100 transition-all duration-300 overflow-hidden absolute left-1/2 transform -translate-x-1/2">
+                    <div className="mt-3 sm:group-hover:bottom-2 sm:bottom-0 bottom-0 opacity-100 sm:opacity-0 group-hover:opacity-100 transition-all duration-300 overflow-hidden absolute left-1/2 transform -translate-x-1/2">
                       <div
                         onClick={() => AddToCart(item)}
-                        className="bg-[#F28F6A] text-white text-sm px-5 py-2 rounded-full cursor-pointer"
+                        className="text-black text-5xl rounded-full cursor-pointer"
                       >
-                        Add To Cart
+                        <CiCirclePlus/>
                       </div>
                     </div>
                   </div>
