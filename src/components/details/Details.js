@@ -4,7 +4,7 @@ import { ProductsDetails } from './../../data/ProductsDetails';
 
 const Details = () => {
   const { id } = useParams();
-  const product = ProductsDetails.find((p) => p.id === Number(id));
+  const product = ProductsDetails.iphone.find((p) => p.id === Number(id));
 
   if (!product) {
     return (

@@ -49,6 +49,11 @@ const Cart = () => {
               </>)
              }
 
+            <button
+            className="cursor-pointer w-full mt-6 bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-3 px-6 rounded-md focus:outline-none focus:shadow-outline transition duration-300 ease-in-out"
+            type="button"
+          >Check Out Now</button>
+
           </div>
 
      

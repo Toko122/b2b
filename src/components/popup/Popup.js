@@ -47,8 +47,9 @@ const Popup = ({ popup, onClose }) => {
                         key={brandIndex}
                         className="px-3 py-1 bg-gray-100 rounded-md shadow-sm text-sm cursor-pointer hover:bg-gray-200"
                         onClick={() => {
+                          
                           setActiveBrandIndex(brandIndex === activeBrandIndex ? null : brandIndex);
-                          navigate(`/brand/${brand.brandName.toLowerCase()}`);
+                          navigate(`/brandsPage/${brand.brandName.toLowerCase()}`);
                         }}
                       >
                        

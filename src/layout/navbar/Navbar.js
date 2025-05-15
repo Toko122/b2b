@@ -4,6 +4,8 @@ import { FaSearch, FaCartArrowDown, FaBars } from "react-icons/fa";
 import { BiUserCircle } from "react-icons/bi";
 import Popup from "../../components/popup/Popup";
 import Cart from "../../components/cart/Cart";
+import { ProductsDetails } from "../../data/ProductsDetails";
+import Search from "../searchFilter/Search";
 
 
 const Navbar = () => {
@@ -29,6 +31,13 @@ const Navbar = () => {
 
   const location = useLocation()
   const isHomePage = location.pathname === '/'
+
+  const [inputValue, setInputValue] = useState('')
+     
+     const filteredProduct = ProductsDetails.filter((product) => product.name.toLowerCase().includes(inputValue.toLowerCase()))
+
+     console.log("ძებნის შედეგები:", filteredProduct);
+
   return (
     <>
       <nav className={`w-full bg-[#FBFBFB] shadow-sm ${isHomePage ? "fixed top-0 z-100" : ""}`}>
@@ -56,12 +65,32 @@ const Navbar = () => {
               type="text"
               placeholder="Search..."
               className="w-full outline-none border px-4 py-2 rounded-full text-sm md:text-base"
+              value={inputValue}
+              onChange={(e)=>setInputValue(e.target.value)}
             />
             <div className="absolute right-3 top-1/2 transform -translate-y-1/2 bg-white rounded-full h-[30px] w-[30px] flex justify-center items-center cursor-pointer shadow">
               <FaSearch className="text-sm" />
             </div>
           </div>
 
+           {
+            inputValue && (
+              <div className="absolute top-full bg-white py-2 px-1 border right-0 left-0 border-1 rounded-md max-h-60 overflow-y-auto z-50">
+                      {
+                        filteredProduct.length > 0 ?
+                        (
+                         filteredProduct.map((product) => (
+                          <Search product={product} key={product.id} />
+                         )) 
+                        )
+                        :
+                        (
+                          <p className="p-2 text-sm text-gray-500">No results found</p>
+                        )
+                      }
+              </div>
+            )
+           }
           
           <div className="flex gap-3 md:gap-4">
           <Link

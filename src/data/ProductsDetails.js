@@ -1,5 +1,5 @@
 export const ProductsDetails = [
-    {
+  {
       id: 1,
       name: "iPhone 16",
       price: 2899,
@@ -209,9 +209,11 @@ export const ProductsDetails = [
       connectivity: ["5G", "Wi-Fi 6", "Bluetooth 5.0"],
       inStock: true,
       inCart: false,
+      type: "computer"
     },
     {
       id: 10,
+      type: "computer",
       name: "Acer",
       price: 499,
       image: "/assets/d0c71e69-8329-44de-b6fb-4a84625b803b51971c4b-7116-40b7-8186-17fb9b5f897d.webp",
@@ -235,6 +237,7 @@ export const ProductsDetails = [
     },
     {
       id: 11,
+      type: "computer",
       name: "Xiaomi",
       price: 549,
       image: "/assets/8ed34f2e-128f-4d6e-8e02-6ea52ca2ccabe0dec7a6-bff2-4358-a526-a7acfba6bff3.webp",
@@ -259,6 +262,7 @@ export const ProductsDetails = [
   
     {
         id: 12,
+        type: "computer",
         name: "MSI",
         price: 1389,
         image: "/assets/86599d46-3131-45a7-8e9d-7ee23fcda0655e03c840-c17f-4b36-8d33-b0cc6e576249.webp",
@@ -283,6 +287,7 @@ export const ProductsDetails = [
       {
         id: 13,
         name: "MSI",
+        type: "computer",
         price: 899,
         image: "/assets/b16938fc-5c35-4e84-85b1-b5b4a141efb5f7aa22f9-8f2a-4c9a-aba5-3ce62c9d5e56.webp",
         description: "MSI monitor 24 G2422 9S6-3BA41A-031 Black",
@@ -306,6 +311,7 @@ export const ProductsDetails = [
       {
         id: 14,
         name: "Xiaomi",
+        type: "computer",
         price: 659,
         image: "/assets/0804d30d-7a28-4621-8c38-d6fba27f020e3317d269-dc8f-4b3e-8881-185d79902460.webp",
         description: "Xiaomi monitor 24.5 G25 Black",
@@ -329,6 +335,7 @@ export const ProductsDetails = [
       {
         id: 15,
         name: "MSI",
+        type: "computer",
         price: 1119,
         image: "/assets/73d69a33-49b5-4fc8-a14b-c870230e6a5e637781cd-5808-4cd2-917b-e3dcadf31a1f.webp",
         description: "MSI monitor 24 PRO MP241X 9S6-3BA41H-011 Black",
@@ -351,6 +358,7 @@ export const ProductsDetails = [
       },
       {
         id: 16,
+        type: "computer",
         name: "MSI",
         price: 1139,
         image: "/assets/ff41eb98-530a-496f-a603-9d30294f8fdf26868c6b-f1b4-4d89-bb50-e15f0dc63e5e.webp",
@@ -374,6 +382,7 @@ export const ProductsDetails = [
       },
       {
         id: 17,
+        type: "computer",
         name: "Philips",
         price: 1239,
         image: "/assets/a0409f99-5985-41bc-bd5c-1f7460c08a867b84eaa6-949c-4656-921a-fce98f4e6bc3.webp",
@@ -398,6 +407,7 @@ export const ProductsDetails = [
       {
         id: 18,
         name: "Xiaomi",
+        type: "computer",
         price: 999,
         image: "/assets/8aa9f55f-2160-48e5-b78d-efea5ac862f268c7f39b-cfaf-42ed-a000-58f370f6ed78.webp",
         description: "Xiaomi monitor 24 BHR6366GL Black",
@@ -418,6 +428,5 @@ export const ProductsDetails = [
         inStock: true,
         inCart: false,
       },
-      
-  ];
+    ]
   
