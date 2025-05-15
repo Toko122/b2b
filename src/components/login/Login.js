@@ -10,7 +10,7 @@ const Login = () => {
         <h1 className="text-2xl font-semibold">Register For</h1>
 
         <div className="flex flex-col md:flex-row gap-10 md:gap-20 items-center">
-          {/* Reseller Option */}
+          
           <div
             onClick={() => navigate('/login/resellerlogin')}
             className="flex flex-col gap-2 items-center shadow-lg p-6 rounded-lg cursor-pointer bg-white hover:scale-105 transition-transform duration-200"
@@ -23,7 +23,7 @@ const Login = () => {
             <div className="text-base font-semibold">As a Reseller</div>
           </div>
 
-          {/* Distributor Option */}
+          
           <div
             onClick={() => navigate('/login/distributorlogin')}
             className="flex flex-col gap-2 items-center shadow-lg p-6 rounded-lg cursor-pointer bg-white hover:scale-105 transition-transform duration-200"
