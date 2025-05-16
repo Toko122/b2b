@@ -49,7 +49,7 @@ const Popup = ({ popup, onClose }) => {
                         onClick={() => {
                           
                           setActiveBrandIndex(brandIndex === activeBrandIndex ? null : brandIndex);
-                          navigate(`/brandsPage/${brand.brandName.toLowerCase()}`);
+                          navigate(`/brand/${brand.brandName.toLowerCase()}`);
                         }}
                       >
                        
