@@ -13,16 +13,16 @@ const BrandsPage = () => {
   const [minPrice, setMinPrice] = useState(0);
   const [maxPrice, setMaxPrice] = useState(5200);
 
-  // Combine phone and computer data
+  
   const allProducts = [
     ...ProductsDetails.filter(product => !product.type), // Phones
     ...ComputerData.map(product => ({ ...product, type: 'computer' })) // Computers
   ];
 
-  // Get unique brands from products
+
   const brands = ['all', ...new Set(allProducts.map(product => product.name))];
 
-  // Filter products based on search term, brand, category, and price
+  
   const filteredProducts = allProducts.filter(product => {
     const matchesSearch = product.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
                          product.description.toLowerCase().includes(searchTerm.toLowerCase());
@@ -35,11 +35,11 @@ const BrandsPage = () => {
 
   return (
     <div className="py-24 px-4 sm:px-8 md:px-20 bg-gray-50 min-h-screen flex flex-col gap-12">
-      {/* Search and Filters */}
+     
       <div className="bg-white p-6 rounded-2xl shadow-md w-full max-w-4xl mx-auto space-y-6">
         <h3 className="text-xl font-semibold text-gray-700">Filters</h3>
         
-        {/* Search Input */}
+        
         <div className="w-full">
           <input
             type="text"
@@ -50,7 +50,7 @@ const BrandsPage = () => {
           />
         </div>
 
-        {/* Category Filter */}
+       
         <div className="flex gap-4">
           <button
             onClick={() => setSelectedCategory('all')}
@@ -81,7 +81,7 @@ const BrandsPage = () => {
           </button>
         </div>
 
-        {/* Brand Filter */}
+       
         <div className="flex flex-wrap gap-2">
           {brands.map((brand) => (
             <button
@@ -97,7 +97,7 @@ const BrandsPage = () => {
           ))}
         </div>
 
-        {/* Price Range Filter */}
+        
         <div className="flex flex-col gap-4">
           <div className="flex justify-between items-center gap-6">
             <div className="flex flex-col w-1/2">
@@ -122,7 +122,7 @@ const BrandsPage = () => {
         </div>
       </div>
 
-      {/* Products Grid */}
+      
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 w-full">
         {filteredProducts.map((item, index) => (
           <div
@@ -159,7 +159,7 @@ const BrandsPage = () => {
         ))}
       </div>
 
-      {/* No Results Message */}
+      
       {filteredProducts.length === 0 && (
         <div className="text-center text-gray-500 text-xl">
           No products found matching your criteria
