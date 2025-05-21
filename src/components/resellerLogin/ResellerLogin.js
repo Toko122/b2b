@@ -38,7 +38,7 @@ const ResellerLogin = () => {
             <button type="submit" class="mt-8 cursor-pointer w-full h-11 rounded-full text-white bg-indigo-500 hover:opacity-90 transition-opacity">
                 Login
             </button>
-            <p class="text-gray-500/90 text-sm mt-4">Don’t have an account? <Link to='/distributorSignUp' class="text-indigo-400 hover:underline text-indigo-500">Sign up</Link></p>
+            <p class="text-gray-500/90 text-sm mt-4">Don’t have an account? <Link to='/reselerSignUp' class="text-indigo-400 hover:underline text-indigo-500">Sign up</Link></p>
         </form>
     </div>
 </div>

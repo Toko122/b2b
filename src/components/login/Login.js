@@ -5,7 +5,7 @@ const Login = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="w-full py-50 flex justify-center items-center bg-[#f2f2f2] px-4">
+    <div className="w-full py-50 flex justify-center items-center px-4">
       <div className="flex flex-col gap-16 items-center">
         <h1 className="text-2xl font-semibold">Register For</h1>
 

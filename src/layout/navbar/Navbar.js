@@ -12,6 +12,7 @@ const Navbar = () => {
   const [cartCount, setCartCount] = useState(0);
   const [inputValue, setInputValue] = useState("");
 
+
   const navigate = useNavigate();
   const location = useLocation();
   const isHomePage = location.pathname === "/";

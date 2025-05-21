@@ -17,11 +17,9 @@ const ProductPage = () => {
   return (
     <div className="flex w-full justify-center bg-gray-100 py-22">
       <div className="flex flex-col md:flex-row w-4/5 max-w-screen-lg bg-white rounded-lg shadow-lg overflow-hidden py-4 px-[14px]">
-      <Link to="/" className='text-indigo-600 hover:underline h-fit'>Back</Link>
+        <Link to="/" className='text-indigo-600 hover:underline h-fit'>Back</Link>
         <div className="md:w-1/2 p-8 flex justify-start items-center">
-        
           <div className="rounded-md overflow-hidden">
-          
             <img
               src={product.image}
               alt={product.name}
@@ -30,27 +28,25 @@ const ProductPage = () => {
           </div>
         </div>
 
-         <span className='h-full w-[1px] bg-gray-300 mr-10'></span>
+        <span className='h-full w-[1px] bg-gray-300 mr-10'></span>
 
-        <div className="md:w-1/2 px-8 py-8 flex flex-col justify-between">
-          <div>
-            <h1 className="font-semibold text-3xl text-gray-800 mb-4">
-              {product.name}
-            </h1>
-            <p className="text-gray-600 leading-relaxed mb-6">
-              {product.description}
-            </p>
-            <h2 className="font-bold text-2xl text-indigo-600 mb-4">
-              {product.price} ₾
-            </h2>
-          </div>
-          <button
-            className="cursor-pointer bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-3 px-6 rounded-md focus:outline-none focus:shadow-outline transition duration-300 ease-in-out"
-            type="button"
-          >
-            Buy Now
-          </button>
+        <div>
+          <h1 className="font-semibold text-3xl text-gray-800 mb-4">
+            {product.name}
+          </h1>
+          <p className="text-gray-600 leading-relaxed mb-6">
+            {product.description}
+          </p>
+          <h2 className="font-bold text-2xl text-indigo-600 mb-4">
+            {product.price} ₾
+          </h2>
         </div>
+        <button
+          className="cursor-pointer bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-3 px-6 rounded-md focus:outline-none focus:shadow-outline transition duration-300 ease-in-out"
+          type="button"
+        >
+          Buy Now
+        </button>
       </div>
     </div>
   );
