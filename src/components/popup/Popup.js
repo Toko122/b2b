@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { brandsProducts } from "../../data/brandsData";
 import { useLocation, useNavigate } from "react-router-dom";
+import { MdKeyboardArrowLeft } from "react-icons/md";
+import { MdKeyboardArrowRight } from "react-icons/md";
 
 
 const Popup = ({ popup, onClose }) => {
@@ -12,13 +14,16 @@ const Popup = ({ popup, onClose }) => {
 
 
   return (
-    <div className="fixed inset-0 bg-[rgba(0,0,0,0.5)] flex justify-center items-center z-150">
-      <div className="bg-white w-[1100px] h-[700px] rounded-lg sm:p-8 px-2 py-4 overflow-auto relative">
-        <button
-          className="absolute right-6 sm:right-10 text-2xl cursor-pointer hover:text-red-500 transition-all duration-300"
+    <div className="fixed inset-0 bg-[rgba(0,0,0,0.5)] flex justify-start items-center z-150 w-full">
+      <div className="bg-white w-[600px] h-full rounded-lg sm:p-8 px-2 py-4 overflow-auto relative flex flex-col gap-6">
+        <button 
+          className="text-2xl text-start gap-6 w-full bg-blue-300 py-4 px-2 rounded-lg cursor-pointer"
           onClick={onClose}
         >
-          &times;
+          <span className="flex items-center gap-2 hover:text-[#f2f2f2] w-fit transition duration-300">
+          <span className="mt-1"><MdKeyboardArrowLeft /></span>
+          <span className="flex items-start text-start font-semibold text-md">Go Back</span>
+          </span>
         </button>
         <div className="flex flex-col gap-4 sm:gap-6">
           {brandsProducts.map((product, productIndex) => (
@@ -30,17 +35,22 @@ const Popup = ({ popup, onClose }) => {
                     productIndex === activeProductIndex ? null : productIndex
                   )
                 }
-                className="sm:text-2xl text-1xl font-semibold cursor-pointer w-fit px-4 py-2 rounded-md flex flex-col gap-2 hover:text-[#B2B2B2] transition-all duration-300"
+                className="sm:text-2xl w-full text-1xl font-semibold cursor-pointer w-fit px-2 py-2 rounded-md flex flex-col gap-4 hover:text-[#B5B5B5] transition-all duration-300"
               >
+                
+                <div className="flex justify-between items-center">
                 {product.name}
-                <span className="bg-black w-full h-[1px]"></span>
+                <span className="text-black"><MdKeyboardArrowRight/></span>
+                </div>
+
+              <span className="bg-[#ccc] w-full h-[1px]"></span>
               </div>
 
               
               {activeProductIndex === productIndex && (
                 <div className="ml-4 mt-2">
                   
-                  <div className="flex gap-4 flex-wrap flex-col w-fit text-center">
+                  <div className="flex gap-4 flex-wrap w-fit text-center">
                     {product.brands.map((brand, brandIndex) => (
                       <div
                         key={brandIndex}
