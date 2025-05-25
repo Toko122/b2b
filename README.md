@@ -1,70 +1,238 @@
-# Getting Started with Create React App
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+B2B Django API დოკუმენტაცია 
+Base URL: http://localhost:8000/api/v1/ 
+�
+�	კალათა 
+GET /cart/ – კალათის მიღება - აღწერა: აბრუნებს მომხმარებლის კალათაში არსებულ ნივთებს. - მეთოდი: GET - Output: 
+[ 
+{ 
+"id": 2, 
+"product": { 
+"id": 1, 
+"name": "Iphone 16 pro max", 
+"brand": "Iphone", 
+"description": "Desc", 
+"price": "15.00", 
+"bulk_price": "5.00", 
+"stock_quantity": 10, 
+"min_order_quantity": 5, 
+"sku": "123332", 
+"barcode": "123", 
+"weight_kg": 23, 
+"dimensions_cm": "32", 
+"created_at": "2025-05-24T13:46:17.919177+04:00", 
+"attributes": "{\"RAM\":\"16\",\"SSD\":\"259\"}", 
+"category": 1, 
+"supplier": 1 
+}, 
+"quantity": 5 
+} 
+] 
+POST /cart/ – პროდუქტის დამატება კალათაში - მეთოდი: POST - Body: 
+{ 
+} 
+  "product": 10, 
+  "quantity": 5 - Output: 
+{ 
+} 
+"message": "Added to cart" 
+DELETE /cart/ – პროდუქტის წაშლა კალათიდან - მეთოდი: DELETE - Body: 
+{ 
+} 
+  "product": 10 
+Output: 
+{ 
+} 
+"message": "Item removed from cart" 
+�
+�	მომხმარებელი 
+POST /customer/login/ – ავტორიზაცია - მეთოდი: POST - Body: 
+{ 
+} 
+  "email": "shabashvilinika@yahoo.com", 
+  "password": "123" 
+Output: 
+{ 
+"id": 1, 
+"firstname": "Nika", 
+"lastname": "Shabashvili", 
+"email": "shabashvilinika@yahoo.com" 
+} 
+GET /customer/profile/ – პროფილის ნახვა - მეთოდი: GET 
+Output: 
+{ 
+} 
+"id": 1, 
+"firstname": "Nika", 
+"lastname": "Shabashvili", 
+"email": "shabashvilinika@yahoo.com" 
+�
+�	შეკვეთა 
+POST /order/submit – შეკვეთის დადასტურება - მეთოდი: POST - Body: 
+{ 
+  "shipping_address": "გორგასალი 159" 
+} - Output: 
+{ 
+"id": 1, 
+"customer_name": "nika", 
+"order_date": "2025-05-24T13:50:22.977109+04:00", 
+"total_price": "75.00", 
+"status": "PENDING", 
+"payment_status": "PENDING", 
+"tracking_number": null, 
+"shipping_address": "გორგასალი 159", 
+"estimated_delivery_date": null, 
+"items": [ 
+{ 
+} 
+], 
+"id": 1, 
+"product": 1, 
+"product_name": "Iphone 16 pro max", 
+"quantity": 5, 
+"price_per_unit": "15.00" 
+"invoice": { 
+  "invoice_number": "INV-000001", 
+  "order_id": 1, 
+  "customer_name": "nika", 
+  "shipping_address": "გორგასალი 159", 
+  "order_date": "2025-05-24T13:50:22.977109+04:00", 
+  "items": [ 
+   { 
+    "product_name": "Iphone 16 pro max", 
+    "quantity": 5, 
+    "price_per_unit": "15.00", 
+    "line_total": 75 
+   } 
+  ], 
+  "total_price": "75.00" 
+ } 
+} 
+GET /order/my – ჩემი შეკვეთები -მეთოდი: GET -Output 
+[ 
+ { 
+  "id": 1, 
+  "customer_name": "nika", 
+  "order_date": "2025-05-24T13:50:22.977109+04:00", 
+  "total_price": "75.00", 
+  "status": "PENDING", 
+  "payment_status": "PENDING", 
+  "tracking_number": null, 
+  "shipping_address": "გორგასალი 159", 
+  "estimated_delivery_date": null, 
+  "items": [ 
+   { 
+    "id": 1, 
+    "product": 1, 
+    "product_name": "Iphone 16 pro max", 
+    "quantity": 5, 
+    "price_per_unit": "15.00" 
+   } 
+  ], 
+  "invoice": { 
+   "invoice_number": "INV-000001", 
+   "order_id": 1, 
+   "customer_name": "nika", 
+   "shipping_address": "გორგასალი 159", 
+   "order_date": "2025-05-24T13:50:22.977109+04:00", 
+   "items": [ 
+    { 
+     "product_name": "Iphone 16 pro max", 
+     "quantity": 5, 
+     "price_per_unit": "15.00", 
+     "line_total": 75 
+    } 
+   ], 
+   "total_price": "75.00" 
+  } 
+ } 
+] 
+�
+� კატეგორია 
+GET /category/view – ყველა კატეგორიის მიღება 
+Output: 
+[ 
+ { 
+  "id": 1, 
+  "subcategories": [], 
+  "name": "Phones", 
+  "description": "Phones", 
+  "image": null, 
+  "parent": null 
+} 
+] 
+GET /category/view/{id} – კატეგორია ID-ით 
+Output: 
+{ 
+} 
+"id": 1, 
+"subcategories": [], 
+"name": "Phones", 
+"description": "Phones", 
+"image": null, 
+"parent": null 
+GET /category/view/{id}/attributes – ატრიბუტები კატეგორიით 
+[ 
+{ 
+}, 
+{ 
+"id": 1, 
+"name": "RAM", 
+"category": 1 
+"id": 2, 
+"name": "SSD", 
+"category": 1 
+} 
+] 
+�
+�	პროდუქტი 
+GET /product/category/{category_id} – პროდუქტები კატეგორიით და 
+მომწოდებლით 
+Filter query params: 
+min_price 
+max_price 
+search 
+ordering 
+supplier_id 
+attribute_ (ram) (ssd) 
+Output: 
+[ 
+{ 
+"id": 1, 
+"name": "Iphone 16 pro max", 
+"brand": "Iphone", 
+"description": "Desc", 
+"price": "15.00", 
+"bulk_price": "5.00", 
+"stock_quantity": 10, 
+"min_order_quantity": 5, 
+"sku": "123332", 
+"barcode": "123", 
+"weight_kg": 23, 
+"dimensions_cm": "32", 
+"created_at": "2025-05-24T13:46:17.919177+04:00", 
+"attributes": "{\"RAM\":\"16\",\"SSD\":\"259\"}", 
+"category": 1, 
+"supplier": 1 
+} 
+] 
+GET /product/{id} – პროდუქტი ID-ით 
+{ 
+"id": 1, 
+"name": "Iphone 16 pro max", 
+"brand": "Iphone", 
+"description": "Desc", 
+"price": "15.00", 
+"bulk_price": "5.00", 
+"stock_quantity": 10, 
+"min_order_quantity": 5, 
+"sku": "123332", 
+"barcode": "123", 
+"weight_kg": 23, 
+"dimensions_cm": "32", 
+"created_at": "2025-05-24T13:46:17.919177+04:00", 
+"attributes": "{\"RAM\":\"16\",\"SSD\":\"259\"}", 
+"category": 1, 
+"supplier": 1 
+} 
+�
+�	ქუქი ფაილები - sessionId: სესიის მართვა - csrftoken: CSRF დაცვისთვი
