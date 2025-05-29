@@ -13,16 +13,16 @@ const Products = () => {
 
   return (
     <div className="w-full flex justify-center items-center flex-col">
-      <div className={`flex flex-col ${isHomePage ? "mt-45 sm:mt-30" : ""} items-center py-6 sm:px-4 px-2 w-full gap-16 relative overflow-x-hidden w-full`}>
+      <div className={`flex flex-col ${isHomePage ? "mt-45 sm:mt-30" : ""} items-center py-6 sm:px-6 px-2 w-full gap-16 relative overflow-x-hidden w-full`}>
         <div className="flex flex-col gap-4 items-start w-full">
           <h1 className="text-[22px] font-semibold text-center ml-2 sm:ml-20">Best Sellers Phones</h1>
 
           <div className="relative w-full">
-            <div className="flex gap-4 px-2 py-4 flex-wrap w-full justify-start">
+            <div className="flex gap-8 px-2 py-4 flex-wrap w-full justify-center md:justify-start">
               {BestSellers.map((item, index) => (
                 <div
                   key={index}
-                  className="group snap-start relative bg-white text-black rounded-xl shadow-md w-[85vw] sm:w-[250px] py-6 shrink-0 transition-all duration-300 ease-in-out"
+                  className="group snap-start relative bg-white text-black rounded-xl shadow-md w-[85vw] sm:w-[280px] py-6 shrink-0 transition-all duration-300 ease-in-out"
                 >
                   <img
                     src={item.image}
