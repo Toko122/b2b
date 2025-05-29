@@ -148,7 +148,7 @@ const BrandsPage = () => {
             {filteredProducts.map((item, index) => (
               <div
                 key={index}
-                className="group relative bg-white/80 backdrop-blur-sm text-black rounded-3xl shadow-xl transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 w-[350px] sm:w-[400px] border border-gray-100/50"
+                className="group relative bg-white/80 backdrop-blur-sm text-black rounded-3xl shadow-xl transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 w-[350px] sm:w-[280px] border border-gray-100/50"
               >
                 <div className="relative overflow-hidden rounded-t-3xl">
                   <img
@@ -159,7 +159,7 @@ const BrandsPage = () => {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 </div>
-                <div className="p-8 flex flex-col gap-4">
+                <div className="p-4 flex flex-col gap-4">
                   <h2 className="text-xl font-bold truncate text-gray-800">{item.name}</h2>
                   <p className="text-sm text-gray-600 line-clamp-2">{item.description}</p>
                   <div className="flex justify-between items-center mt-2">

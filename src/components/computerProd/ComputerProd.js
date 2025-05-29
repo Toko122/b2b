@@ -19,12 +19,12 @@ const ComputerProd = () => {
           <div className="relative w-full">
             <div
               
-              className="flex gap-4 px-2 py-4 flex-wrap w-full justify-center"
+              className="flex gap-4 px-2 py-4 flex-wrap w-full justify-start"
             >
               {ComputerData.map((item, index) => (
                 <div
                   key={index}
-                  className="group snap-start relative bg-white text-black rounded-xl shadow-md w-[85vw] sm:w-[400px] py-6 shrink-0 transition-all duration-300 ease-in-out"
+                  className="group snap-start relative bg-white text-black rounded-xl shadow-md w-[85vw] sm:w-[290px] py-6 shrink-0 transition-all duration-300 ease-in-out"
                 >
                   <img
                     src={item.image}
