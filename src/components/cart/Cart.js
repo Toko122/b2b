@@ -1,37 +1,72 @@
 import React, { useEffect, useState } from 'react';
 import { CiCircleRemove } from "react-icons/ci";
+import { getCartItems, removeFromCart } from '../Api';
 
 const Cart = () => {
-  const [cartItem, setCartItem] = useState([]);
+  
+     const [cartItems, setCartItems] = useState([])
+     const [error, setError] = useState(null)
+     const [loading, setLoading] = useState(true)
 
-  useEffect(() => {
-    const cart = JSON.parse(localStorage.getItem('cart')) || [];
-    setCartItem(cart);
-  }, []);
+     useEffect(()=>{
+      fetchCartItems()
+    })
 
-  const removeItems = (id) => {
-    const filtered = cartItem.filter((product) => product.id !== id);
-    setCartItem(filtered);
-    localStorage.setItem("cart", JSON.stringify(filtered));
-    window.dispatchEvent(new Event('cartUpdated'));
-  };
+     const fetchCartItems = async () => {
+        try{
+          setLoading(false)
+          const response = await getCartItems()
+          setCartItems(response.data)
+          setError(null)
+        }catch(err){
+          setError('Failed to fetch cart items');
+          console.error('Error fetching cart:', err);
+        }finally{
+          setLoading(false)
+        }
+     }
 
-  const totalQuantity = cartItem.reduce((total, item) => total + item.quantity, 0);
-  const totalPrice = cartItem.reduce((total, item) => total + item.quantity * item.price, 0);
+     const removeItems = async (id) => {
+         try{
+          await removeFromCart(id)
+          await fetchCartItems()
+          window.dispatchEvent(new Event("cartUpdated"))
+         }catch(err){
+          setError('Failed to remove item from cart');
+          console.error('Error removing item:', err);
+         }
+     }
+
+     const totalQuantity = cartItems.reduce((total, item) => total + item.quantity, 0)
+     const totalPrice = cartItems.reduce((total, item) => total + item.quantity * item.price, 0)
+
+  if (loading) {
+    return (
+      <div className="flex justify-center items-center min-h-screen">
+        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500"></div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="flex justify-center items-center min-h-screen">
+        <div className="text-red-500">{error}</div>
+      </div>
+    );
+  }
 
   return (
     <div className="flex flex-col lg:flex-row gap-8 p-6 py-24 max-w-7xl mx-auto">
-      
-      
-      <div className="flex-1 bg-white p-6 rounded-lg shadow-md">
+      <div className="flex-1">
         <h1 className="text-3xl font-semibold mb-6">Your Cart</h1>
 
-        {cartItem.length === 0 ? (
+        {cartItems.length === 0 ? (
           <p className="text-gray-600">Your Cart Is Empty</p>
         ) : (
           <ul className="space-y-4">
-            {cartItem.map((item, index) => (
-              <li key={index} className="flex justify-between items-center bg-gray-50 p-4 rounded-lg relative shadow-sm">
+            {cartItems.map((item) => (
+              <li key={item.id} className="flex justify-between items-center bg-gray-50 p-4 rounded-lg relative shadow-sm">
                 <div className="flex items-center gap-4">
                   <img src={item.image} alt={item.name} className="w-20 h-20 object-contain rounded" />
                   <div>
@@ -52,11 +87,10 @@ const Cart = () => {
         )}
       </div>
 
-      
-      <div className="w-full lg:w-1/3 bg-white p-6 rounded-lg shadow-md h-fit">
+      <div className="lg:w-1/3 bg-white p-6 rounded-lg shadow-sm">
         <h2 className="text-2xl font-semibold mb-4">Total Summary</h2>
   
-        {cartItem.length > 0 ? (
+        {cartItems.length > 0 ? (
           <>
             <div className="flex justify-between text-gray-700 mb-2">
               <span>Total Items:</span>

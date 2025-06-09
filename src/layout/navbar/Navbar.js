@@ -3,36 +3,33 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FaSearch, FaCartArrowDown, FaBars } from "react-icons/fa";
 import { BiUserCircle } from "react-icons/bi";
 import Popup from "../../components/popup/Popup";
-
+import { getCartItems } from "../../components/Api";
 
 const Navbar = () => {
   const [openPopup, setOpenPopup] = useState(false);
   const [cartCount, setCartCount] = useState(0);
 
-
-
   const location = useLocation();
   const isHomePage = location.pathname === "/";
 
   useEffect(() => {
-    const updatedCart = () => {
-      const carts = JSON.parse(localStorage.getItem("cart")) || [];
-      const totalProd = carts.reduce((total, item) => total + item.quantity, 0);
-      setCartCount(totalProd);
+    const fetchCartCount = async () => {
+      try {
+        const response = await getCartItems();
+        const totalItems = response.data.reduce((total, item) => total + item.quantity, 0);
+        setCartCount(totalItems);
+      } catch (error) {
+        console.error('Error fetching cart count:', error);
+      }
     };
 
-    updatedCart();
-    window.addEventListener("cartUpdated", updatedCart);
+    fetchCartCount();
+    window.addEventListener("cartUpdated", fetchCartCount);
 
     return () => {
-      window.removeEventListener("cartUpdated", updatedCart);
+      window.removeEventListener("cartUpdated", fetchCartCount);
     };
   }, []);
-
-
-  
-
- 
 
   return (
     <>
@@ -73,7 +70,7 @@ const Navbar = () => {
 
           <div className="flex gap-3 md:gap-4">
             <Link
-              to="/cart"
+              to="/cart/"
               className="flex relative items-center gap-2 py-2 px-3 md:px-4 bg-white rounded-full md:rounded-[8px] cursor-pointer shadow"
             >
               <span className="font-semibold text-sm md:text-base">Cart</span>
@@ -84,7 +81,7 @@ const Navbar = () => {
             </Link>
 
             <Link
-              to="/login"
+              to="/customer/login/"
               className="flex items-center gap-2 py-1 px-4 md:w-[120px] md:flex md:justify-center bg-white rounded-full md:rounded-[8px] cursor-pointer shadow"
             >
               <span className="font-semibold text-sm md:text-base lg:text-base">

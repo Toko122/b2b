@@ -1,26 +1,16 @@
 import React from 'react'
+import { addToCart } from './Api'
 
-const AddToCart = (product) => {
-
-    const exsitingCart = JSON.parse(localStorage.getItem('cart')) || []
-
-    const findProduct = exsitingCart.findIndex((item) => item.id === product.id)
-
-    if(findProduct !== -1) {
-       exsitingCart[findProduct].quantity += 1
-    }else{
-        exsitingCart.push({...product, quantity: 1})
+const AddToCart = async (product) => {
+    try {
+        await addToCart({
+            productId: product.id,
+            quantity: 1
+        });
+        window.dispatchEvent(new Event("cartUpdated"));
+    } catch (error) {
+        console.error('Error adding to cart:', error);
     }
-
-    localStorage.setItem('cart', JSON.stringify(exsitingCart))
-
-    window.dispatchEvent(new Event("cartUpdated"));
-
-  return (
-    <div>
-       
-    </div>
-  )
 }
 
 export default AddToCart

@@ -8,7 +8,8 @@ const Api = axios.create({
     withCredentials: true
 })
 
-export const loginUser = (credentials) => Api.post("/customer/login", credentials)
+
+export const loginUser = (credentials) => Api.post("/customer/login/", credentials)
 export const getUserProfile = () => Api.get("/customer/profile")
 
 export const getCategories = () => Api.get("/category/view")
