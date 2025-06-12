@@ -12,6 +12,8 @@ const Navbar = () => {
   const location = useLocation();
   const isHomePage = location.pathname === "/";
 
+   const token = localStorage.getItem('token')
+
   useEffect(() => {
     const fetchCartCount = async () => {
       try {
@@ -80,7 +82,19 @@ const Navbar = () => {
               <FaCartArrowDown className="text-lg" />
             </Link>
 
-            <Link
+            {
+              token ? (
+                <Link
+              to="/customer/profile"
+              className="flex items-center gap-2 py-1 px-4 md:w-[120px] md:flex md:justify-center bg-white rounded-full md:rounded-[8px] cursor-pointer shadow"
+            >
+              <span className="font-semibold text-sm md:text-base lg:text-base">
+                Log out
+              </span>
+              <BiUserCircle className="text-lg" />
+            </Link>
+              ) : (
+                <Link
               to="/customer/login/"
               className="flex items-center gap-2 py-1 px-4 md:w-[120px] md:flex md:justify-center bg-white rounded-full md:rounded-[8px] cursor-pointer shadow"
             >
@@ -89,6 +103,8 @@ const Navbar = () => {
               </span>
               <BiUserCircle className="text-lg" />
             </Link>
+              )
+            }
           </div>
 
           

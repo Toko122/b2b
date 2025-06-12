@@ -10,7 +10,7 @@ const Cart = () => {
 
      useEffect(()=>{
       fetchCartItems()
-    })
+    }, [])
 
      const fetchCartItems = async () => {
         try{
