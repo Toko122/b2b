@@ -30,8 +30,8 @@ const ProductPage = () => {
 
         <span className='h-full w-[1px] bg-gray-300 mr-10'></span>
 
-        <div>
-          <h1 className="font-semibold text-3xl text-gray-800 mb-4">
+        <div className='flex flex-col w-full relative md:gap-0 gap-4'>
+          <h1 className="font-semibold text-3xl text-gray-800">
             {product.name}
           </h1>
           <p className="text-gray-600 leading-relaxed mb-6">
@@ -40,13 +40,15 @@ const ProductPage = () => {
           <h2 className="font-bold text-2xl text-indigo-600 mb-4">
             {product.price} ₾
           </h2>
-        </div>
+        
         <button
-          className="cursor-pointer bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-3 px-6 rounded-md focus:outline-none focus:shadow-outline transition duration-300 ease-in-out"
+          className="cursor-pointer absolute bottom-4 w-[95%] bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-3 px-6 rounded-md focus:outline-none focus:shadow-outline transition duration-300 ease-in-out"
           type="button"
         >
           Buy Now
         </button>
+        </div>
+        
       </div>
     </div>
   );

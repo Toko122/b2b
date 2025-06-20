@@ -5,11 +5,22 @@ import Brands from '../brands/Brands';
 import ComputerProd from '../computerProd/ComputerProd';
 import AddToCart from '../AddToCart';
 import { CiCirclePlus } from "react-icons/ci";
+import { addToCart } from '../Api';
 
 const Products = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const isHomePage = location.pathname === '/';
+
+  const AddToCart = async (item) => {
+        try{
+           await addToCart(item)
+           alert("დაემატა კალათაში!");
+           window.dispatchEvent(new Event("cartUpdated"));
+        }catch(err){
+          alert(err)
+        }
+  }
 
   return (
     <div className="w-full flex justify-center items-center flex-col">
@@ -45,7 +56,7 @@ const Products = () => {
 
                     <div className="mt-3 sm:group-hover:bottom-2 sm:bottom-0 bottom-0 opacity-100 sm:opacity-0 group-hover:opacity-100 transition-all duration-300 overflow-hidden absolute left-1/2 transform -translate-x-1/2">
                       <div
-                        onClick={() => AddToCart(item)}
+                        onClick={() => AddToCart({ productId: item.id, quantity: 1 })}
                         className="text-black text-5xl rounded-full cursor-pointer"
                       >
                         <CiCirclePlus/>
